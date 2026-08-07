@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Universal Links - requires
+	     https://app.bitzlatoview.com/.well-known/apple-app-site-association
+	     to be hosted and reference this app's Team ID + Bundle ID. See
+	     deep_linking/apple-app-site-association in this repo. -->
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:app.bitzlatoview.com</string>
+	</array>
+
+	<!-- Push notifications (APNs via Firebase Cloud Messaging) -->
+	<key>aps-environment</key>
+	<string>development</string>
+
+	<!-- Encrypted keychain storage used by flutter_secure_storage for
+	     session cookie backups. -->
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)com.bitzlatoview.bitzlatoview_mobile</string>
+	</array>
+</dict>
+</plist>

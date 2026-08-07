@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>CADisableMinimumFrameDurationOnPhone</key>
+		<true/>
+		<key>CFBundleDevelopmentRegion</key>
+		<string>$(DEVELOPMENT_LANGUAGE)</string>
+		<key>CFBundleDisplayName</key>
+		<string>Bitzlatoview Mobile</string>
+		<key>CFBundleExecutable</key>
+		<string>$(EXECUTABLE_NAME)</string>
+		<key>CFBundleIdentifier</key>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+		<key>CFBundleInfoDictionaryVersion</key>
+		<string>6.0</string>
+		<key>CFBundleName</key>
+		<string>bitzlatoview_mobile</string>
+		<key>CFBundlePackageType</key>
+		<string>APPL</string>
+		<key>CFBundleShortVersionString</key>
+		<string>$(FLUTTER_BUILD_NAME)</string>
+		<key>CFBundleSignature</key>
+		<string>????</string>
+		<key>CFBundleVersion</key>
+		<string>$(FLUTTER_BUILD_NUMBER)</string>
+		<key>LSRequiresIPhoneOS</key>
+		<true/>
+
+		<!-- Camera / photo library - KYC selfie & document uploads -->
+		<key>NSCameraUsageDescription</key>
+		<string>Bitzlatoview uses your camera for KYC identity verification and to capture documents for upload.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Bitzlatoview needs access to your photo library so you can upload KYC documents and receipts.</string>
+		<key>NSPhotoLibraryAddUsageDescription</key>
+		<string>Bitzlatoview needs access to save downloaded receipts and documents to your photo library.</string>
+
+		<!-- Local network probing is used only to detect connectivity for the offline screen -->
+		<key>NSLocalNetworkUsageDescription</key>
+		<string>Bitzlatoview checks local network reachability to accurately show connectivity status.</string>
+
+		<!-- P2P trade region matching (optional, user-initiated via the app) -->
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Bitzlatoview can use your approximate location to suggest nearby P2P trading offers.</string>
+
+		<!-- Face ID for the optional biometric app-lock and withdrawal confirmation -->
+		<key>NSFaceIDUsageDescription</key>
+		<string>Bitzlatoview uses Face ID to protect access to the app and confirm sensitive actions.</string>
+
+		<!-- All traffic to the platform is HTTPS/TLS 1.2+; no ATS exceptions are
+		     defined. If a third-party KYC/payment vendor embedded via the
+		     WebView requires an exception, add a narrowly-scoped
+		     NSExceptionDomains entry here rather than a global
+		     NSAllowsArbitraryLoads. -->
+		<key>NSAppTransportSecurity</key>
+		<dict>
+			<key>NSAllowsArbitraryLoads</key>
+			<false/>
+		</dict>
+
+		<key>UIBackgroundModes</key>
+		<array>
+			<string>remote-notification</string>
+		</array>
+		<key>UIApplicationSceneManifest</key>
+		<dict>
+			<key>UIApplicationSupportsMultipleScenes</key>
+			<false/>
+			<key>UISceneConfigurations</key>
+			<dict>
+				<key>UIWindowSceneSessionRoleApplication</key>
+				<array>
+					<dict>
+						<key>UISceneClassName</key>
+						<string>UIWindowScene</string>
+						<key>UISceneConfigurationName</key>
+						<string>flutter</string>
+						<key>UISceneDelegateClassName</key>
+						<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+						<key>UISceneStoryboardFile</key>
+						<string>Main</string>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+		<key>UIApplicationSupportsIndirectInputEvents</key>
+		<true/>
+		<key>UILaunchStoryboardName</key>
+		<string>LaunchScreen</string>
+		<key>UIMainStoryboardFile</key>
+		<string>Main</string>
+		<key>UISupportedInterfaceOrientations</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+			<string>UIInterfaceOrientationLandscapeLeft</string>
+			<string>UIInterfaceOrientationLandscapeRight</string>
+		</array>
+		<key>UISupportedInterfaceOrientations~ipad</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+			<string>UIInterfaceOrientationPortraitUpsideDown</string>
+			<string>UIInterfaceOrientationLandscapeLeft</string>
+			<string>UIInterfaceOrientationLandscapeRight</string>
+		</array>
+		<!-- Custom-scheme deep link fallback, e.g. bitzlatoview://trade/123 -->
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleURLName</key>
+				<string>com.bitzlatoview.bitzlatoview_mobile</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>bitzlatoview</string>
+				</array>
+			</dict>
+		</array>
+
+		<key>UIStatusBarHidden</key>
+		<false/>
+		<key>UIViewControllerBasedStatusBarAppearance</key>
+		<false/>
+	</dict>
+</plist>

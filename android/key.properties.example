@@ -1,0 +1,12 @@
+# Copy this file to android/key.properties (which is git-ignored) and fill
+# in your real release keystore details before running:
+#   flutter build appbundle --release
+#
+# Generate a keystore with:
+#   keytool -genkey -v -keystore ~/bitzlatoview-release.jks \
+#     -keyalg RSA -keysize 2048 -validity 10000 -alias bitzlatoview
+
+storePassword=CHANGE_ME
+keyPassword=CHANGE_ME
+keyAlias=bitzlatoview
+storeFile=/absolute/path/to/bitzlatoview-release.jks
