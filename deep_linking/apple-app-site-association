@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.com.bitzlatoview.bitzlatoviewMobile",
+        "paths": [
+          "*",
+          "/",
+          "/trade/*",
+          "/p2p/*",
+          "/orders/*",
+          "/wallet/*"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "TEAMID.com.bitzlatoview.bitzlatoviewMobile"
+    ]
+  }
+}
