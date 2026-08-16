@@ -1,0 +1,37 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [main, 'cursor/**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.29.0'
+      - run: cp android/app/google-services.json.example android/app/google-services.json
+      - run: cp ios/Runner/GoogleService-Info.plist.example ios/Runner/GoogleService-Info.plist
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+
+  deep-link-check:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Verify assetlinks.json
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" https://app.bitzlatoview.com/.well-known/assetlinks.json)
+          echo "assetlinks.json HTTP $code"
+          test "$code" = "200"
+      - name: Verify apple-app-site-association
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" https://app.bitzlatoview.com/.well-known/apple-app-site-association)
+          echo "AASA HTTP $code"
+          test "$code" = "200"

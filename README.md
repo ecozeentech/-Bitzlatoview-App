@@ -141,12 +141,19 @@ flutter test integration_test
 ./scripts/setup_firebase.sh      # Copy Firebase config templates locally
 ./scripts/deploy_android.sh      # Build Play Store AAB
 ./scripts/deploy_ios.sh          # Build iOS release (macOS + Xcode)
+./scripts/setup_github_repo.sh   # Create & push to bitzlatoview-mobile repo
 ```
 
-- [Test report](docs/TEST_REPORT.md) – automated results and manual checklist
-- [Deployment guide](docs/DEPLOYMENT.md) – Play Store and App Store steps
-- [Beta testing](docs/TESTING.md) – instructions for internal testers
-- [Store listing](docs/STORE_LISTING.md) – marketing copy and metadata
+| Guide | Description |
+|-------|-------------|
+| [Device test walkthrough](docs/DEVICE_TEST_WALKTHROUGH.md) | Step-by-step testing on your Android/iOS device |
+| [Store upload guide](docs/STORE_UPLOAD_GUIDE.md) | Google Play + App Store submission |
+| [GitHub setup](docs/GITHUB_SETUP.md) | Create `bitzlatoview-mobile` repository |
+| [Deep link hosting](config/deep-linking/README.md) | Host App Links / Universal Links on your domain |
+| [Test report](docs/TEST_REPORT.md) | Automated results and manual checklist |
+| [Deployment guide](docs/DEPLOYMENT.md) | Build, sign, and release |
+| [Store listing](docs/STORE_LISTING.md) | Marketing copy and metadata |
+| [Beta testing](docs/TESTING.md) | Instructions for internal testers |
 
 ## Store Submission
 
