@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../config/constants.dart';
 import '../config/theme.dart';
+import '../widgets/bitzlatoview_logo.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -14,27 +14,12 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                color: AppTheme.darkCard,
-                borderRadius: BorderRadius.circular(24),
-                border: Border.all(color: AppTheme.primaryGold, width: 2),
-              ),
-              child: const Icon(
-                Icons.currency_bitcoin,
-                size: 64,
-                color: AppTheme.primaryGold,
-              ),
-            ),
-            const SizedBox(height: 24),
-            Text(
-              AppConstants.appName,
-              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    color: AppTheme.primaryGold,
-                    letterSpacing: 1.2,
-                  ),
+            const BitzlatoviewAppIcon(size: 128),
+            const SizedBox(height: 28),
+            const BitzlatoviewLogo(
+              iconSize: 0,
+              fontSize: 28,
+              showWordmark: true,
             ),
             const SizedBox(height: 8),
             Text(

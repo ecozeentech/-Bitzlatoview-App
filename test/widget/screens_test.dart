@@ -8,6 +8,7 @@ import 'package:bitzlatoview_mobile/providers/webview_provider.dart';
 import 'package:bitzlatoview_mobile/screens/offline_screen.dart';
 import 'package:bitzlatoview_mobile/screens/settings_screen.dart';
 import 'package:bitzlatoview_mobile/screens/splash_screen.dart';
+import 'package:bitzlatoview_mobile/widgets/bitzlatoview_logo.dart';
 
 Widget _wrap(Widget child) {
   return MultiProvider(
@@ -39,7 +40,7 @@ void main() {
     testWidgets('shows branded splash content', (tester) async {
       await tester.pumpWidget(_wrap(const SplashScreen()));
 
-      expect(find.text('Bitzlatoview'), findsOneWidget);
+      expect(find.byType(BitzlatoviewLogo), findsWidgets);
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });
   });

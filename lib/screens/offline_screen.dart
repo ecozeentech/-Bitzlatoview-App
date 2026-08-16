@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../config/theme.dart';
 
+import '../widgets/bitzlatoview_logo.dart';
+
 class OfflineScreen extends StatelessWidget {
   const OfflineScreen({
     super.key,
@@ -20,6 +22,8 @@ class OfflineScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const BitzlatoviewAppIcon(size: 72),
+              const SizedBox(height: 32),
               Icon(
                 Icons.wifi_off_rounded,
                 size: 80,
