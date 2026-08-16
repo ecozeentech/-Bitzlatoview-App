@@ -1,0 +1,5 @@
+json_key_file("") # Path to Google Play service account JSON (optional)
+package_name("com.bitzlatoview.bitzlatoview_mobile")
+
+app_identifier("com.bitzlatoview.bitzlatoviewMobile")
+apple_id("") # Your Apple ID email

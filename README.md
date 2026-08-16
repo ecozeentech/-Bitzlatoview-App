@@ -134,6 +134,20 @@ flutter test
 flutter test integration_test
 ```
 
+## Testing & deployment
+
+```bash
+./scripts/run_tests.sh           # Automated tests (analyze + unit/widget)
+./scripts/setup_firebase.sh      # Copy Firebase config templates locally
+./scripts/deploy_android.sh      # Build Play Store AAB
+./scripts/deploy_ios.sh          # Build iOS release (macOS + Xcode)
+```
+
+- [Test report](docs/TEST_REPORT.md) – automated results and manual checklist
+- [Deployment guide](docs/DEPLOYMENT.md) – Play Store and App Store steps
+- [Beta testing](docs/TESTING.md) – instructions for internal testers
+- [Store listing](docs/STORE_LISTING.md) – marketing copy and metadata
+
 ## Store Submission
 
 ### Google Play

@@ -1,45 +1,64 @@
+# Flutter/Dart
+.dart_tool/
+.pub-cache/
+.pub/
+build/
+*.iml
+*.pid
+*.swp
+*.swo
+
+# Keep pubspec.lock for reproducible CI builds (do not ignore)
+
+# Android
+android/.gradle/
+android/app/.gradle/
+android/app/build/
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+
+# iOS
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Flutter/ephemeral/
+ios/Podfile.lock
+ios/Pods/
+ios/Runner/GeneratedPluginRegistrant.*
+
+# Environment & secrets
+.env
+.env.*
+*.env
+*.p12
+*.pem
+*.key
+
+# Firebase (use .example templates; copy locally before building)
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
 # Miscellaneous
 *.class
 *.log
-*.pyc
-*.swp
 .DS_Store
 .atom/
-.build/
-.buildlog/
 .history
 .svn/
 .swiftpm/
 migrate_working_dir/
 
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
-
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
-
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-/build/
-
-# Symbolication related
+# Symbolication / obfuscation
 app.*.symbols
-
-# Obfuscation related
 app.*.map.json
 
-# Android Studio will place build artifacts here
+# Android Studio outputs
 /android/app/debug
 /android/app/profile
 /android/app/release
