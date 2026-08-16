@@ -15,7 +15,6 @@ import '../providers/webview_provider.dart';
 import '../services/deep_link_service.dart';
 import '../services/js_bridge_service.dart';
 import '../utils/helpers.dart';
-import '../widgets/bitzlatoview_logo.dart';
 import '../widgets/error_widget.dart';
 import '../widgets/loading_indicator.dart';
 import 'offline_screen.dart';
@@ -137,10 +136,13 @@ class _WebViewScreenState extends State<WebViewScreen> {
         return Scaffold(
           backgroundColor: AppTheme.darkBackground,
           appBar: AppBar(
-            title: const BitzlatoviewLogo(iconSize: 32, fontSize: 20),
+            automaticallyImplyLeading: false,
+            toolbarHeight: 48,
+            title: const SizedBox.shrink(),
             actions: [
               IconButton(
                 icon: const Icon(Icons.settings_outlined),
+                tooltip: 'Settings',
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute<void>(
