@@ -4,7 +4,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../config/constants.dart';
 import '../config/theme.dart';
@@ -16,7 +15,6 @@ import '../services/deep_link_service.dart';
 import '../services/js_bridge_service.dart';
 import '../utils/helpers.dart';
 import '../widgets/error_widget.dart';
-import '../widgets/loading_indicator.dart';
 import 'offline_screen.dart';
 import 'settings_screen.dart';
 import 'splash_screen.dart';
@@ -34,8 +32,6 @@ class WebViewScreen extends StatefulWidget {
 }
 
 class _WebViewScreenState extends State<WebViewScreen> {
-  final RefreshController _refreshController =
-      RefreshController(initialRefresh: false);
   final JsBridgeService _bridgeService = JsBridgeService();
   final DeepLinkService _deepLinkService = DeepLinkService();
 
@@ -84,7 +80,6 @@ class _WebViewScreenState extends State<WebViewScreen> {
 
   @override
   void dispose() {
-    _refreshController.dispose();
     _deepLinkService.dispose();
     super.dispose();
   }
@@ -105,11 +100,6 @@ class _WebViewScreenState extends State<WebViewScreen> {
     } catch (e) {
       debugPrint('Bridge error: $e');
     }
-  }
-
-  Future<void> _onRefresh() async {
-    await context.read<WebViewProvider>().reload();
-    _refreshController.refreshCompleted();
   }
 
   @override
@@ -133,12 +123,26 @@ class _WebViewScreenState extends State<WebViewScreen> {
           );
         }
 
+        final isLoading = webViewProvider.loadState.isLoading &&
+            webViewProvider.loadState.progress < 1;
+        final hasError = webViewProvider.loadState.errorMessage != null;
+
         return Scaffold(
           backgroundColor: AppTheme.darkBackground,
           appBar: AppBar(
             automaticallyImplyLeading: false,
             toolbarHeight: 48,
             title: const SizedBox.shrink(),
+            bottom: isLoading
+                ? PreferredSize(
+                    preferredSize: const Size.fromHeight(3),
+                    child: LinearProgressIndicator(
+                      value: webViewProvider.loadState.progress,
+                      backgroundColor: AppTheme.darkCard,
+                      color: AppTheme.primaryGold,
+                    ),
+                  )
+                : null,
             actions: [
               IconButton(
                 icon: const Icon(Icons.settings_outlined),
@@ -155,81 +159,77 @@ class _WebViewScreenState extends State<WebViewScreen> {
           ),
           body: Stack(
             children: [
-              SmartRefresher(
-                controller: _refreshController,
-                enablePullDown: true,
-                onRefresh: _onRefresh,
-                header: const WaterDropMaterialHeader(
-                  backgroundColor: AppTheme.darkSurface,
-                  color: AppTheme.primaryGold,
+              InAppWebView(
+                initialUrlRequest: URLRequest(
+                  url: WebUri(_initialUrl),
                 ),
-                child: InAppWebView(
-                  initialUrlRequest: URLRequest(
-                    url: WebUri(_initialUrl),
-                  ),
-                  initialSettings: InAppWebViewSettings(
-                    javaScriptEnabled: true,
-                    domStorageEnabled: true,
-                    databaseEnabled: true,
-                    cacheEnabled: true,
-                    cacheMode: CacheMode.LOAD_DEFAULT,
-                    mediaPlaybackRequiresUserGesture: false,
-                    allowsInlineMediaPlayback: true,
-                    useHybridComposition: true,
-                    transparentBackground: true,
-                  ),
-                  onWebViewCreated: (controller) {
-                    webViewProvider.setController(controller);
-                    controller.addJavaScriptHandler(
-                      handlerName: AppConstants.jsBridgeName,
-                      callback: (args) {
-                        if (args.isNotEmpty) {
-                          _handleBridgeMessage(args.first.toString());
-                        }
-                      },
-                    );
-                  },
-                  onLoadStart: (controller, url) {
-                    webViewProvider.onLoadStart(url?.toString());
-                  },
-                  onProgressChanged: (controller, progress) {
-                    webViewProvider.onProgress(progress);
-                  },
-                  onLoadStop: (controller, url) async {
-                    final authProvider = context.read<AuthProvider>();
-                    final notificationProvider =
-                        context.read<NotificationProvider>();
-                    webViewProvider.onLoadStop(url?.toString());
-                    await authProvider.persistSession();
-                    await controller.evaluateJavascript(
-                      source: Helpers.getBridgeInjectionScript(),
-                    );
+                initialSettings: InAppWebViewSettings(
+                  javaScriptEnabled: true,
+                  domStorageEnabled: true,
+                  databaseEnabled: true,
+                  cacheEnabled: true,
+                  cacheMode: CacheMode.LOAD_DEFAULT,
+                  mediaPlaybackRequiresUserGesture: false,
+                  allowsInlineMediaPlayback: true,
+                  useHybridComposition: true,
+                  verticalScrollBarEnabled: true,
+                  horizontalScrollBarEnabled: true,
+                  disableVerticalScroll: false,
+                  disableHorizontalScroll: false,
+                  supportZoom: false,
+                  overScrollMode: OverScrollMode.IF_CONTENT_SCROLLS,
+                  useWideViewPort: true,
+                  loadWithOverviewMode: true,
+                  builtInZoomControls: false,
+                  displayZoomControls: false,
+                ),
+                onWebViewCreated: (controller) {
+                  webViewProvider.setController(controller);
+                  controller.addJavaScriptHandler(
+                    handlerName: AppConstants.jsBridgeName,
+                    callback: (args) {
+                      if (args.isNotEmpty) {
+                        _handleBridgeMessage(args.first.toString());
+                      }
+                    },
+                  );
+                },
+                onLoadStart: (controller, url) {
+                  webViewProvider.onLoadStart(url?.toString());
+                },
+                onProgressChanged: (controller, progress) {
+                  webViewProvider.onProgress(progress);
+                },
+                onLoadStop: (controller, url) async {
+                  final authProvider = context.read<AuthProvider>();
+                  final notificationProvider =
+                      context.read<NotificationProvider>();
+                  webViewProvider.onLoadStop(url?.toString());
+                  await authProvider.persistSession();
+                  await controller.evaluateJavascript(
+                    source: Helpers.getBridgeInjectionScript(),
+                  );
 
-                    final fcmToken = notificationProvider.fcmToken;
-                    if (fcmToken != null) {
-                      await controller.evaluateJavascript(
-                        source:
-                            "if (window.registerFCMToken) window.registerFCMToken('$fcmToken');",
-                      );
-                    }
-                  },
-                  onReceivedError: (controller, request, error) {
-                    webViewProvider.onError(error.description);
-                  },
-                  shouldOverrideUrlLoading: (controller, navigationAction) async {
-                    final uri = navigationAction.request.url;
-                    if (uri == null) return NavigationActionPolicy.CANCEL;
-                    return Helpers.shouldAllowNavigation(Uri.parse(uri.toString()));
-                  },
-                ),
+                  final fcmToken = notificationProvider.fcmToken;
+                  if (fcmToken != null) {
+                    await controller.evaluateJavascript(
+                      source:
+                          "if (window.registerFCMToken) window.registerFCMToken('$fcmToken');",
+                    );
+                  }
+                },
+                onReceivedError: (controller, request, error) {
+                  webViewProvider.onError(error.description);
+                },
+                shouldOverrideUrlLoading: (controller, navigationAction) async {
+                  final uri = navigationAction.request.url;
+                  if (uri == null) return NavigationActionPolicy.CANCEL;
+                  return Helpers.shouldAllowNavigation(
+                    Uri.parse(uri.toString()),
+                  );
+                },
               ),
-              if (webViewProvider.loadState.isLoading &&
-                  webViewProvider.loadState.progress < 1)
-                LoadingIndicator(
-                  progress: webViewProvider.loadState.progress,
-                  message: 'Loading...',
-                ),
-              if (webViewProvider.loadState.errorMessage != null)
+              if (hasError)
                 AppErrorWidget(
                   message: webViewProvider.loadState.errorMessage!,
                   onRetry: () => webViewProvider.reload(),

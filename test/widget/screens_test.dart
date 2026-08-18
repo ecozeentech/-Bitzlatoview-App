@@ -46,7 +46,9 @@ void main() {
   });
 
   group('SettingsScreen', () {
-    testWidgets('shows legal and account sections', (tester) async {
+    testWidgets('shows legal and app sections without duplicate logout', (
+      tester,
+    ) async {
       await tester.pumpWidget(_wrap(const SettingsScreen()));
 
       await tester.pumpAndSettle();
@@ -54,7 +56,8 @@ void main() {
       expect(find.text('Privacy Policy'), findsOneWidget);
       expect(find.text('Terms of Service'), findsOneWidget);
       expect(find.text('Risk Disclosure'), findsOneWidget);
-      expect(find.text('Logout'), findsOneWidget);
+      expect(find.text('Clear Cache'), findsOneWidget);
+      expect(find.text('Logout'), findsNothing);
     });
   });
 }

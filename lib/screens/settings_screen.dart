@@ -5,7 +5,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../config/constants.dart';
 import '../config/theme.dart';
-import '../providers/auth_provider.dart';
 import '../providers/webview_provider.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -51,34 +50,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
-  Future<void> _logout() async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Logout'),
-        content: const Text('Are you sure you want to logout?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text('Logout'),
-          ),
-        ],
-      ),
-    );
-
-    if (confirmed == true && mounted) {
-      final authProvider = context.read<AuthProvider>();
-      final webViewProvider = context.read<WebViewProvider>();
-      await authProvider.logout();
-      await webViewProvider.loadUrl(AppConstants.baseUrl);
-      if (mounted) Navigator.pop(context);
-    }
-  }
-
   Future<void> _clearCache() async {
     await context.read<WebViewProvider>().clearCache();
     if (mounted) {
@@ -100,7 +71,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: ListView(
         children: [
-          _SectionHeader(title: 'Legal'),
+          const _SectionHeader(title: 'Legal'),
           _SettingsTile(
             icon: Icons.privacy_tip_outlined,
             title: 'Privacy Policy',
@@ -116,13 +87,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Risk Disclosure',
             onTap: () => _openUrl(AppConstants.riskDisclosureUrl),
           ),
-          const _SectionHeader(title: 'Account'),
-          _SettingsTile(
-            icon: Icons.logout,
-            title: 'Logout',
-            onTap: _logout,
-            isDestructive: true,
-          ),
+          const _SectionHeader(title: 'App'),
           _SettingsTile(
             icon: Icons.cleaning_services_outlined,
             title: 'Clear Cache',
@@ -187,26 +152,24 @@ class _SettingsTile extends StatelessWidget {
     required this.title,
     this.subtitle,
     this.onTap,
-    this.isDestructive = false,
   });
 
   final IconData icon;
   final String title;
   final String? subtitle;
   final VoidCallback? onTap;
-  final bool isDestructive;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: Icon(
         icon,
-        color: isDestructive ? AppTheme.errorColor : AppTheme.primaryGold,
+        color: AppTheme.primaryGold,
       ),
       title: Text(
         title,
-        style: TextStyle(
-          color: isDestructive ? AppTheme.errorColor : AppTheme.textPrimary,
+        style: const TextStyle(
+          color: AppTheme.textPrimary,
         ),
       ),
       subtitle: subtitle != null ? Text(subtitle!) : null,
