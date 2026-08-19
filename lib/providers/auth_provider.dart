@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+
 import '../services/cookie_service.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -12,20 +14,30 @@ class AuthProvider extends ChangeNotifier {
   bool get isSessionRestored => _isSessionRestored;
   bool get isAuthenticated => _isAuthenticated;
 
-  Future<void> restoreSession() async {
-    await _cookieService.restoreCookies();
+  Future<void> restoreSession({
+    InAppWebViewController? webViewController,
+  }) async {
+    await _cookieService.restoreCookies(
+      webViewController: webViewController,
+    );
     _isSessionRestored = true;
     notifyListeners();
   }
 
-  Future<void> persistSession() async {
-    await _cookieService.saveCookies();
+  Future<void> persistSession({
+    InAppWebViewController? webViewController,
+  }) async {
+    await _cookieService.saveCookies(
+      webViewController: webViewController,
+    );
     _isAuthenticated = true;
     notifyListeners();
   }
 
-  Future<void> logout() async {
-    await _cookieService.clearCookies();
+  Future<void> logout({InAppWebViewController? webViewController}) async {
+    await _cookieService.clearCookies(
+      webViewController: webViewController,
+    );
     _isAuthenticated = false;
     notifyListeners();
   }
