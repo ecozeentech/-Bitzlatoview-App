@@ -1,7 +1,7 @@
 name: bitzlatoview_mobile
 description: Bitzlatoview Mobile – native Flutter client for the Bitzlatoview fintech platform.
 publish_to: 'none'
-version: 1.0.5+6
+version: 1.0.6+7
 
 environment:
   sdk: ^3.7.0
