@@ -1,23 +1,18 @@
 # Bitzlatoview Mobile – Downloads
 
-## Latest Play Console release (v1.0.6)
+## Latest Play Console release (v1.0.7)
 
-**Download page:** https://github.com/ecozeentech/-Bitzlatoview-App/releases/tag/v1.0.6-play
+**Download page:** https://github.com/ecozeentech/-Bitzlatoview-App/releases/tag/v1.0.7-play
 
-On that page, expand **Assets** and download:
+### Direct download
 
-| File | Use |
-|------|-----|
-| `bitzlatoview-mobile-v1.0.6.aab` | Upload to Google Play Console (versionCode 7) |
-| `bitzlatoview-release.keystore` | Keep safe — required for future updates |
-| `PLAY_CONSOLE_SIGNING.txt` | Keystore passwords and certificate fingerprints |
+- [AAB (Play Console)](https://github.com/ecozeentech/-Bitzlatoview-App/releases/download/v1.0.7-play/bitzlatoview-mobile-v1.0.7.aab)
 
-### Direct download links
+**Version:** 1.0.7 (versionCode 8) | **targetSdk:** 35
 
-- [AAB (Play Console)](https://github.com/ecozeentech/-Bitzlatoview-App/releases/download/v1.0.6-play/bitzlatoview-mobile-v1.0.6.aab)
+### Previous releases
 
-### Previous release
-
+- [v1.0.6-play](https://github.com/ecozeentech/-Bitzlatoview-App/releases/tag/v1.0.6-play) (versionCode 7 — superseded)
 - [v1.0.5-play](https://github.com/ecozeentech/-Bitzlatoview-App/releases/tag/v1.0.5-play) (versionCode 6 — superseded)
 
 ## Play Console upload
