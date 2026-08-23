@@ -3,6 +3,8 @@
 .pub-cache/
 .pub/
 build/
+.flutter-plugins
+.flutter-plugins-dependencies
 *.iml
 *.pid
 *.swp
