@@ -29,8 +29,8 @@ Bitzlatoview Mobile is the official native app for the Bitzlatoview trading plat
 
 All financial operations are processed securely on Bitzlatoview servers. Trading involves risk of loss. No guaranteed returns.
 
-**Support:** support@bitzlatoview.com  
-**Privacy:** https://app.bitzlatoview.com/privacy
+**Support:** support@bitzlatoview.org  
+**Privacy:** https://bitzlatoview.org/privacy
 
 ## Keywords (App Store)
 
@@ -49,10 +49,10 @@ Finance
 
 | Field | URL |
 |-------|-----|
-| Privacy Policy | https://app.bitzlatoview.com/privacy |
-| Terms of Service | https://app.bitzlatoview.com/terms |
-| Support | https://app.bitzlatoview.com/support |
-| Marketing | https://app.bitzlatoview.com |
+| Privacy Policy | https://bitzlatoview.org/privacy |
+| Terms of Service | https://bitzlatoview.org/terms |
+| Support | https://bitzlatoview.org/support |
+| Marketing | https://bitzlatoview.org |
 
 ## App Review notes (Apple)
 
@@ -61,7 +61,7 @@ Finance
 ## Release notes (v1.0.0)
 
 Initial release of Bitzlatoview Mobile:
-- Secure WebView access to app.bitzlatoview.com
+- Secure WebView access to bitzlatoview.org
 - Push notifications (FCM/APNs)
 - Biometric authentication support
 - Native KYC file upload and camera

@@ -8,7 +8,7 @@ Complete guide for building, signing, and publishing to Google Play and the Appl
 - [ ] Firebase project with Android + iOS apps
 - [ ] Google Play Developer account ($25)
 - [ ] Apple Developer account ($99/year)
-- [ ] Privacy policy: https://app.bitzlatoview.com/privacy
+- [ ] Privacy policy: https://bitzlatoview.org/privacy
 - [ ] Deep link files hosted on production domain
 
 ## 1. Local setup
@@ -27,8 +27,8 @@ Upload files from `config/deep-linking/` to your web server:
 
 | File | Destination |
 |------|-------------|
-| `assetlinks.json` | `https://app.bitzlatoview.com/.well-known/assetlinks.json` |
-| `apple-app-site-association` | `https://app.bitzlatoview.com/.well-known/apple-app-site-association` |
+| `assetlinks.json` | `https://bitzlatoview.org/.well-known/assetlinks.json` |
+| `apple-app-site-association` | `https://bitzlatoview.org/.well-known/apple-app-site-association` |
 
 Update placeholders:
 
@@ -38,8 +38,8 @@ Update placeholders:
 Verify:
 
 ```bash
-curl -I https://app.bitzlatoview.com/.well-known/assetlinks.json
-curl -I https://app.bitzlatoview.com/.well-known/apple-app-site-association
+curl -I https://bitzlatoview.org/.well-known/assetlinks.json
+curl -I https://bitzlatoview.org/.well-known/apple-app-site-association
 ```
 
 ## 3. Android – Google Play
@@ -95,7 +95,7 @@ In Xcode:
 
 - **Bundle ID:** `com.bitzlatoview.bitzlatoviewMobile` (or align to `com.bitzlatoview.app` before first upload)
 - **Signing:** Automatic signing with your Apple Developer team
-- **Capabilities:** Push Notifications, Associated Domains (`applinks:app.bitzlatoview.com`), Background Modes → Remote notifications
+- **Capabilities:** Push Notifications, Associated Domains (`applinks:bitzlatoview.org`), Background Modes → Remote notifications
 
 ### 4.2 Build and archive
 
@@ -110,7 +110,7 @@ In Xcode: **Product → Archive → Distribute App → App Store Connect**
 1. Create app: **Bitzlatoview**, SKU `bitzlatoview-001`
 2. Category: **Finance**
 3. Upload screenshots (iPhone 6.7", optional iPad)
-4. Privacy policy URL: https://app.bitzlatoview.com/privacy
+4. Privacy policy URL: https://bitzlatoview.org/privacy
 5. Demo account for App Review (provide in Review Notes)
 6. Submit for review (typically 24–48 hours)
 
@@ -132,7 +132,7 @@ cd fastlane && fastlane ios deploy
 |-------|----------|
 | Android build fails | `flutter clean`, check `minSdk 24`, verify `key.properties` |
 | iOS pod errors | `cd ios && pod deintegrate && pod install` |
-| Blank WebView | Check HTTPS access to app.bitzlatoview.com |
+| Blank WebView | Check HTTPS access to bitzlatoview.org |
 | Push not working | Verify Firebase config and device token registration |
 | Deep links fail | Confirm `.well-known` files return 200 (currently 404 on production) |
 | Apple 4.2 rejection | Highlight native features: push, biometrics, file picker, offline, settings |

@@ -18,7 +18,7 @@ flutter pub get
 flutterfire configure   # Select your Firebase project
 
 # 4. Deep links (optional for first run; required before store)
-# Upload config/deep-linking/* to app.bitzlatoview.com – see config/deep-linking/README.md
+# Upload config/deep-linking/* to bitzlatoview.org – see config/deep-linking/README.md
 ```
 
 ---
@@ -55,13 +55,13 @@ flutter run -d <device-id>       # e.g. emulator-5554
 | 11 | Feature nav | Tap Spot, P2P, Wallet tabs | ☐ Pages load |
 | 12 | File picker | Trigger KYC upload on web | ☐ Native picker opens |
 | 13 | Notifications | Allow when prompted | ☐ Permission granted |
-| 14 | Deep link | `adb shell am start -a android.intent.action.VIEW -d "https://app.bitzlatoview.com/spot/BTC-USDT"` | ☐ Opens in app |
+| 14 | Deep link | `adb shell am start -a android.intent.action.VIEW -d "https://bitzlatoview.org/spot/BTC-USDT"` | ☐ Opens in app |
 
 ### Android deep link test command
 
 ```bash
 adb shell am start -a android.intent.action.VIEW \
-  -d "https://app.bitzlatoview.com/spot/BTC-USDT" \
+  -d "https://bitzlatoview.org/spot/BTC-USDT" \
   com.bitzlatoview.bitzlatoview_mobile
 ```
 
@@ -112,7 +112,7 @@ For a **physical iPhone**:
 | 10 | Face ID / Touch ID | If web triggers biometric | ☐ |
 | 11 | Camera / KYC | Trigger selfie upload | ☐ |
 | 12 | Push permission | Allow notifications | ☐ |
-| 13 | Universal link | Safari: open `https://app.bitzlatoview.com/spot/BTC-USDT` | ☐ Opens in app |
+| 13 | Universal link | Safari: open `https://bitzlatoview.org/spot/BTC-USDT` | ☐ Opens in app |
 
 ### iOS universal link test
 

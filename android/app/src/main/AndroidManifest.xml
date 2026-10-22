@@ -43,7 +43,7 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data
                     android:scheme="https"
-                    android:host="app.bitzlatoview.com"/>
+                    android:host="bitzlatoview.org"/>
             </intent-filter>
 
             <intent-filter>

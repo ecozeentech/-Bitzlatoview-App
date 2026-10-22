@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../config/theme.dart';
 
-/// Brand logo matching app.bitzlatoview.com header:
+/// Brand logo matching bitzlatoview.org header:
 /// gradient icon badge + "Bitzlato" (white) + "view" (gold).
 class BitzlatoviewLogo extends StatelessWidget {
   const BitzlatoviewLogo({

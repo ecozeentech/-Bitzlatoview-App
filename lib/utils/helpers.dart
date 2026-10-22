@@ -43,6 +43,6 @@ class Helpers {
 
   static bool isAllowedHost(String host) {
     return host == AppConstants.deepLinkHost ||
-        host.endsWith('.bitzlatoview.com');
+        host.endsWith('.bitzlatoview.org');
   }
 }

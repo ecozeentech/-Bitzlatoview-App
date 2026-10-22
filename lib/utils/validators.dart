@@ -1,3 +1,5 @@
+import '../config/constants.dart';
+
 class Validators {
   static bool isValidUrl(String url) {
     final uri = Uri.tryParse(url);
@@ -9,8 +11,8 @@ class Validators {
   static bool isBitzlatoviewUrl(String url) {
     final uri = Uri.tryParse(url);
     if (uri == null) return false;
-    return uri.host == 'app.bitzlatoview.com' ||
-        uri.host.endsWith('.bitzlatoview.com');
+    return uri.host == AppConstants.deepLinkHost ||
+        uri.host.endsWith('.bitzlatoview.org');
   }
 
   static String? validateEmail(String? value) {

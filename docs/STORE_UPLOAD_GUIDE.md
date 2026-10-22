@@ -11,7 +11,7 @@ Step-by-step to upload **Bitzlatoview Mobile v1.0.0** to both stores.
 | Google Play Developer account ($25) | ☐ |
 | Apple Developer account ($99/yr) | ☐ |
 | Firebase project configured (`flutterfire configure`) | ☐ |
-| Deep link files live on `app.bitzlatoview.com` | ☐ |
+| Deep link files live on `bitzlatoview.org` | ☐ |
 | Privacy policy URL live | ☐ |
 | Test account for reviewers | ☐ |
 | App icon + screenshots ready | ☐ |
@@ -82,8 +82,8 @@ Output: `build/app/outputs/bundle/release/app-release.aab`
 - Feature graphic: 1024×500 PNG
 - Screenshots: minimum 8 (phone)
 - Category: **Finance**
-- Contact email: support@bitzlatoview.com
-- Privacy policy: `https://app.bitzlatoview.com/privacy`
+- Contact email: support@bitzlatoview.org
+- Privacy policy: `https://bitzlatoview.org/privacy`
 
 ### App content
 - Privacy policy
@@ -119,7 +119,7 @@ Output: `build/app/outputs/bundle/release/app-release.aab`
 3. **Identifiers → +** → App IDs → `com.bitzlatoview.bitzlatoviewMobile`
 4. Enable capabilities:
    - Push Notifications
-   - Associated Domains (`applinks:app.bitzlatoview.com`)
+   - Associated Domains (`applinks:bitzlatoview.org`)
 
 ## B2. Update Universal Links
 
@@ -186,9 +186,9 @@ fastlane ios deploy
 |-------|-------|
 | Description | `docs/STORE_LISTING.md` |
 | Keywords | crypto, trading, forex, stocks, nft |
-| Support URL | https://app.bitzlatoview.com/support |
-| Marketing URL | https://app.bitzlatoview.com |
-| Privacy Policy URL | https://app.bitzlatoview.com/privacy |
+| Support URL | https://bitzlatoview.org/support |
+| Marketing URL | https://bitzlatoview.org |
+| Privacy Policy URL | https://bitzlatoview.org/privacy |
 
 ### Screenshots (required)
 - iPhone 6.7" (1290×2796): min 3 screenshots
@@ -201,7 +201,7 @@ fastlane ios deploy
 ### App Review Information
 - Contact: your name, phone, email
 - Demo account:
-  - Username: `demo@bitzlatoview.com`
+  - Username: `demo@bitzlatoview.org`
   - Password: *(provide a working test password)*
 - Notes:
   > Native Flutter client for Bitzlatoview. Includes push notifications, biometric auth, native file/camera for KYC, offline handling, and native settings. Financial operations occur on our servers.
@@ -246,6 +246,6 @@ fastlane ios deploy
 # → Archive in Xcode → Distribute to App Store Connect
 
 # Verify deep links
-curl -sI https://app.bitzlatoview.com/.well-known/assetlinks.json
-curl -sI https://app.bitzlatoview.com/.well-known/apple-app-site-association
+curl -sI https://bitzlatoview.org/.well-known/assetlinks.json
+curl -sI https://bitzlatoview.org/.well-known/apple-app-site-association
 ```

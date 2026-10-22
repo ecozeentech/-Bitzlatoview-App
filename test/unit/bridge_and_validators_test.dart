@@ -38,14 +38,14 @@ void main() {
   group('Validators', () {
     test('validates Bitzlatoview URLs', () {
       expect(
-        Validators.isBitzlatoviewUrl('https://app.bitzlatoview.com/trade'),
+        Validators.isBitzlatoviewUrl('https://bitzlatoview.org/trade'),
         isTrue,
       );
       expect(Validators.isBitzlatoviewUrl('https://example.com'), isFalse);
     });
 
     test('validates email format', () {
-      expect(Validators.validateEmail('user@bitzlatoview.com'), isNull);
+      expect(Validators.validateEmail('user@bitzlatoview.org'), isNull);
       expect(Validators.validateEmail('invalid'), isNotNull);
     });
   });

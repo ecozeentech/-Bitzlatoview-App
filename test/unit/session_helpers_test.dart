@@ -6,18 +6,18 @@ void main() {
   group('SessionHelpers', () {
     test('does not persist session on login pages', () {
       expect(
-        SessionHelpers.shouldPersistSession('https://app.bitzlatoview.com/login'),
+        SessionHelpers.shouldPersistSession('https://bitzlatoview.org/login'),
         isFalse,
       );
       expect(
         SessionHelpers.shouldPersistSession(
-          'https://app.bitzlatoview.com/register',
+          'https://bitzlatoview.org/register',
         ),
         isFalse,
       );
       expect(
         SessionHelpers.shouldPersistSession(
-          'https://app.bitzlatoview.com/forgot-password',
+          'https://bitzlatoview.org/forgot-password',
         ),
         isFalse,
       );
@@ -26,16 +26,16 @@ void main() {
     test('persists session on authenticated pages', () {
       expect(
         SessionHelpers.shouldPersistSession(
-          'https://app.bitzlatoview.com/dashboard',
+          'https://bitzlatoview.org/dashboard',
         ),
         isTrue,
       );
       expect(
-        SessionHelpers.shouldPersistSession('https://app.bitzlatoview.com/trade'),
+        SessionHelpers.shouldPersistSession('https://bitzlatoview.org/trade'),
         isTrue,
       );
       expect(
-        SessionHelpers.shouldPersistSession('https://app.bitzlatoview.com/'),
+        SessionHelpers.shouldPersistSession('https://bitzlatoview.org/'),
         isTrue,
       );
     });

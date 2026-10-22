@@ -7,7 +7,7 @@
 3. Install **Bitzlatoview** from the Play Store.
 4. Log in with your test account.
 5. Test: login, dashboard, trading pages, deposit/withdraw, KYC upload, settings logout.
-6. Report bugs via in-app support or email support@bitzlatoview.com.
+6. Report bugs via in-app support or email support@bitzlatoview.org.
 
 ## iOS – TestFlight
 

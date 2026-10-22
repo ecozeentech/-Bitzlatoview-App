@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Matches app.bitzlatoview.com manifest + CSS brand tokens
+  // Matches bitzlatoview.org manifest + CSS brand tokens
   static const Color brandGold = Color(0xFFF5B301);
   static const Color brandGoldLight = Color(0xFFFFE08A);
   static const Color primaryGold = brandGold;

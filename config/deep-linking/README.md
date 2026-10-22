@@ -1,11 +1,11 @@
-# Deep Link Files – Hosting on app.bitzlatoview.com
+# Deep Link Files – Hosting on bitzlatoview.org
 
 These files must be publicly accessible **without redirects** at:
 
 | Platform | URL |
 |----------|-----|
-| Android App Links | `https://app.bitzlatoview.com/.well-known/assetlinks.json` |
-| iOS Universal Links | `https://app.bitzlatoview.com/.well-known/apple-app-site-association` |
+| Android App Links | `https://bitzlatoview.org/.well-known/assetlinks.json` |
+| iOS Universal Links | `https://bitzlatoview.org/.well-known/apple-app-site-association` |
 
 ## 1. Get your signing credentials
 
@@ -60,7 +60,7 @@ public/
 ### Via Hostinger File Manager
 
 1. Log in to [hpanel.hostinger.com](https://hpanel.hostinger.com)
-2. Open **File Manager** for `app.bitzlatoview.com`
+2. Open **File Manager** for `bitzlatoview.org`
 3. Navigate to `public_html` (or `public/` if Laravel is configured)
 4. Create folder `.well-known`
 5. Upload `assetlinks.json`, `apple-app-site-association`, and `.htaccess`
@@ -98,9 +98,9 @@ Then run `php artisan route:clear`.
 ## 4. Verify deployment
 
 ```bash
-curl -sI https://app.bitzlatoview.com/.well-known/assetlinks.json | head -5
-curl -sI https://app.bitzlatoview.com/.well-known/apple-app-site-association | head -5
-curl -s https://app.bitzlatoview.com/.well-known/assetlinks.json | jq .
+curl -sI https://bitzlatoview.org/.well-known/assetlinks.json | head -5
+curl -sI https://bitzlatoview.org/.well-known/apple-app-site-association | head -5
+curl -s https://bitzlatoview.org/.well-known/assetlinks.json | jq .
 ```
 
 Expected: **HTTP 200**, `Content-Type: application/json`, valid JSON body.

@@ -1,6 +1,6 @@
 # Bitzlatoview Mobile
 
-Native Flutter client for Android and iOS that securely wraps the [Bitzlatoview web platform](https://app.bitzlatoview.com) with deep device integration.
+Native Flutter client for Android and iOS that securely wraps the [Bitzlatoview web platform](https://bitzlatoview.org) with deep device integration.
 
 ## Features
 
@@ -8,7 +8,7 @@ Native Flutter client for Android and iOS that securely wraps the [Bitzlatoview 
 - **Session persistence** – Secure cookie storage via `flutter_secure_storage`
 - **JavaScript bridge** – Native file picker, camera, biometrics, location, share, clipboard, and device info
 - **Push notifications** – Firebase Cloud Messaging (Android) and APNs (iOS)
-- **Deep linking** – Universal Links / App Links for `app.bitzlatoview.com`
+- **Deep linking** – Universal Links / App Links for `bitzlatoview.org`
 - **Offline support** – Branded offline screen with automatic retry
 - **Native settings** – Privacy policy, terms, risk disclosure, logout, and cache management
 - **Pull-to-refresh** – Native refresh gesture on the WebView
@@ -58,7 +58,7 @@ flutter pub get
 
 ### 3. Deep linking
 
-Host these files on `app.bitzlatoview.com`:
+Host these files on `bitzlatoview.org`:
 
 - `/.well-known/assetlinks.json` – from `config/deep-linking/assetlinks.json`
 - `/.well-known/apple-app-site-association` – from `config/deep-linking/apple-app-site-association`

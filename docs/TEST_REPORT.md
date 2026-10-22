@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-16  
 **App version:** 1.0.0+1  
-**Target URL:** https://app.bitzlatoview.com  
+**Target URL:** https://bitzlatoview.org  
 **Branch:** `cursor/bitzlatoview-mobile-app-6cf7`
 
 ## Test environment
@@ -91,7 +91,7 @@
 
 | Test case | Status | Notes |
 |-----------|--------|-------|
-| Universal link `app.bitzlatoview.com/...` | **BLOCKED** | Server files return 404 |
+| Universal link `bitzlatoview.org/...` | **BLOCKED** | Server files return 404 |
 | Custom scheme `bitzlatoview://` | **PENDING** | Intent filters configured; device test needed |
 
 ### G. UI consistency
@@ -112,7 +112,7 @@
 
 ## Recommendations
 
-1. **Host deep link files** – Deploy `config/deep-linking/assetlinks.json` and `apple-app-site-association` to `https://app.bitzlatoview.com/.well-known/`.
+1. **Host deep link files** – Deploy `config/deep-linking/assetlinks.json` and `apple-app-site-association` to `https://bitzlatoview.org/.well-known/`.
 2. **Replace Firebase placeholders** – Run `flutterfire configure` and copy real `google-services.json` / `GoogleService-Info.plist`.
 3. **Device test pass** – Run `flutter run` on Pixel emulator (API 34) and iPhone 15 simulator; complete the pending matrix above.
 4. **Release signing** – Create release keystore and `android/key.properties` before Play Store upload.
